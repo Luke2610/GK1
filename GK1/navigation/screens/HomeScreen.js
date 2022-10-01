@@ -15,7 +15,7 @@ export default function HomeScreen({ navigation }) {
   const eventsRef = ref(database, '/events');
   const [events, setEvents] = useState({});
 
-  //funktion der kører når applikationen åbnes
+  //funktion der kører når applikationen åbnes. Henter al information fra database fra /events
   useEffect(() => {
     return onValue(eventsRef, (snapshot) => {
       setEvents(snapshot.val());
@@ -31,16 +31,16 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.homePart}>
           <Text style={styles.headingText}>Recommendation</Text>
           <FlatList
-            data={eventsArray}
-            horizontal={true}
+            data={eventsArray} //bruger data fra eventsArray
+            horizontal={true} //sætter den til horisontal
             style={styles.homeMini}
-            showsHorizontalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false} //fjern scrollindikator
             keyExtractor={(item, index) => eventsKeys[index]}
             renderItem={({ item, index }) => {
               return (
                 <View style={styles.event}>
                   <View style={styles.eventPic}>
-                    <Image
+                    <Image //bruger et standard billede på alle begivenheder
                       source={tennis}
                       style={{
                         alignSelf: 'center',
@@ -63,7 +63,7 @@ export default function HomeScreen({ navigation }) {
         </View>
         <View style={styles.homePart}>
           <Text style={styles.headingText}>Near You</Text>
-          <FlatList
+          <FlatList //eksempel på en anden liste. Lige nu viser den dog i samme rækkefølge som første liste
             data={eventsArray}
             horizontal={true}
             style={styles.homeMini}
@@ -87,8 +87,8 @@ export default function HomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  headingText: { fontSize: 22, fontWeight: 'bold', margin: 5 },
-  homePart: { flex: 1, padding: 30 },
+  headingText: { fontSize: 22, fontWeight: 'bold', margin: 15 },
+  homePart: { flex: 1, padding: 0 },
   homeMini: {
     flex: 1,
     padding: 5,
@@ -112,7 +112,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 2,
-    //borderWidth: 1,
   },
   eventPic: {
     flex: 2,

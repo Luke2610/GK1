@@ -8,14 +8,12 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import { database } from '../../firebase';
-import { ref, onValue, push, update, remove, set } from 'firebase/database';
-import { useNavigation } from '@react-navigation/native';
+import { ref, push } from 'firebase/database';
 
 const CreateEvent = () => {
   const [name, setName] = useState('');
   const [type, setType] = useState('');
   const [place, setPlace] = useState('');
-  const navigation = useNavigation();
   const handleEvent = () => {
     push(ref(database, '/events'), {
       name: name,
@@ -35,7 +33,7 @@ const CreateEvent = () => {
   return (
     <KeyboardAvoidingView style={styles.container} behavior='padding'>
       <View style={styles.over}>
-        <Text style={styles.text}>Add a new event</Text>
+        <Text style={styles.text}>Create new event</Text>
       </View>
       <View style={styles.inputContainer}>
         <TextInput
@@ -86,6 +84,12 @@ const styles = StyleSheet.create({
   inputContainer: { width: '80%' },
   text: { color: '#86A293', fontWeight: '700', fontSize: 30 },
   over: { paddingBottom: 100 },
+  buttonContainer: {
+    width: '60%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 40,
+  },
 });
 
 export default CreateEvent;

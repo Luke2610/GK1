@@ -11,8 +11,8 @@ import { auth } from '../../firebase';
 import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState(''); //email er en tom string fra start
+  const [password, setPassword] = useState(''); //password er en tom string fra start
   const navigation = useNavigation();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -25,20 +25,21 @@ const LoginScreen = () => {
   }, []);
 
   const handleSignUp = () => {
+    //funktion til at håndtere signUp i appen
     auth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email, password) //benytter email og password
       .then((userCredentials) => {
         const user = userCredentials.user;
-        console.log('Registered with:', user.email);
+        console.log('Registered with:', user.email); //logger i konsollen at brugeren er blevet oprettet
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => alert(error.message)); //slår fejl, hvis der sker fejl
   };
 
   const handleLogin = () => {
-    auth
-      .signInWithEmailAndPassword(email, password)
+    auth //benytter firebase.auth til at autorisere logins
+      .signInWithEmailAndPassword(email, password) //benytter email og password til autorisering
       .then((userCredentials) => {
-        const user = userCredentials.user;
+        const user = userCredentials.user; //gemmer usercredentials som user
         console.log('Logged in with:', user.email);
       })
       .catch((error) => alert(error.message));

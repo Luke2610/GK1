@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import React from 'react';
 
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
@@ -21,17 +20,18 @@ const Tab = createBottomTabNavigator();
 
 export default function MainContainer() {
   return (
-    //<NavigationContainer>
-    <Tab.Navigator
-      initialRouteName={homeName}
+    <Tab.Navigator //bottomtab navigation
+      initialRouteName={homeName} //start Home som er det første view
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          let rn = route.name;
+          let rn = route.name; //forkorte route.name
 
           if (rn === homeName) {
-            iconName = focused ? 'home' : 'home-outline';
+            //hvis den valgte tab er Home
+            iconName = focused ? 'home' : 'home-outline'; //sæt icon til Ionicon "Home" hvis trykket på, sæt til "Home-Outline" hvis den ikke er i fokus
           } else if (rn === eventName) {
+            //samme metode som ovenstående
             iconName = focused ? 'albums' : 'albums-outline';
           } else if (rn === createEventName) {
             iconName = focused ? 'add-circle' : 'add-circle-outline';
@@ -39,11 +39,10 @@ export default function MainContainer() {
             iconName = focused ? 'person' : 'person-outline';
           }
 
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <Ionicons name={iconName} size={size} color={color} />; //sæt icon til ovenstående muligheder
         },
-        tabBarActiveTintColor: '#86A293',
-        inactiveTintColor: 'grey',
+        tabBarActiveTintColor: '#86A293', //farve nå aktiv/i fokus
+        inactiveTintColor: 'grey', //farve når inaktiv/ikke i fokus
         labelStyle: { paddingBottom: 10, fontSize: 10 },
         style: { padding: 10, height: 70 },
       })}
@@ -53,7 +52,6 @@ export default function MainContainer() {
       <Tab.Screen name={createEventName} component={CreateEvent} />
       <Tab.Screen name={profileName} component={ProfileScreen} />
     </Tab.Navigator>
-    //</NavigationContainer>
   );
 }
 

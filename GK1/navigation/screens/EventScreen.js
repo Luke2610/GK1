@@ -3,9 +3,14 @@ import React from 'react';
 
 export default function EventScreen({ navigation }) {
   return (
+    //tom screen der blot viser "Event Screen"
     <View style={styles.container}>
       <Text onPress={() => navigation.navigate('Home')} style={styles.text}>
-        EventScreen
+        Events
+      </Text>
+      <Text>
+        Denne skærm skal i fremtiden vise alle begivenheder. Lige ligesom at
+        trykke på "Restauranter" på Wolt, hvor den viser samtlige restauranter.
       </Text>
     </View>
   );
@@ -13,5 +18,5 @@ export default function EventScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  text: { fontSize: 26, fontWeight: 'bold' },
+  text: { color: '#86A293', fontWeight: '700', fontSize: 30, marginBottom: 20 },
 });

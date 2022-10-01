@@ -4,16 +4,16 @@ import { auth } from '../../firebase';
 
 export default function ProfileScreen({ navigation }) {
   const handleSignOut = () => {
-    auth
-      .signOut()
+    auth //bruger auth fra firebase
+      .signOut() //logger brugeren ud
       .then(() => {
-        navigation.replace('MeetMe');
+        navigation.replace('MeetMe'); //når brugeren er logget ud, sendes de tilbage til LoginScreen
       })
       .catch((error) => alert(error.message));
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>ProfileScreen</Text>
+      <Text style={styles.text}>Profile</Text>
       <Text>Email: {auth.currentUser?.email}</Text>
       <TouchableOpacity style={styles.button} onPress={handleSignOut}>
         <Text style={styles.buttonText}>Sign Out</Text>
@@ -24,13 +24,14 @@ export default function ProfileScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  text: { fontSize: 26, fontWeight: 'bold', padding: 15 },
+  text: { color: '#86A293', fontWeight: '700', fontSize: 30 },
   buttonText: { color: 'white', fontWeight: '700', fontSize: 16 },
   button: {
     backgroundColor: '#86A293',
-    width: '100%',
+    width: '60%',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
+    marginTop: 40,
   },
 });
