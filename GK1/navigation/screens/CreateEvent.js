@@ -11,20 +11,25 @@ import { database } from '../../firebase';
 import { ref, push } from 'firebase/database';
 
 const CreateEvent = () => {
-  const [name, setName] = useState('');
-  const [type, setType] = useState('');
-  const [place, setPlace] = useState('');
+  //Lave et nyt event
+  const [name, setName] = useState(''); //opret name, og sæt til ''
+  const [type, setType] = useState(''); //opret type og sæt til ''
+  const [place, setPlace] = useState(''); //opret place og sæt til ''
   const handleEvent = () => {
+    //funktion der tager data fra applikation og indsætter i databasen
     push(ref(database, '/events'), {
+      //skubber data ind i /events i databasen
       name: name,
       type: type,
       place: place,
     })
       .then(() => {
+        //når data er indsat i database gør følgende
         console.log(`Data Saved with name: ${name}`);
         alert('Event created');
       })
       .catch((error) => {
+        //hvis der sker noget uventet i forbindelse med at indsætte i database, gør følgende
         console.log(error);
         alert(error.message);
       });
@@ -32,6 +37,9 @@ const CreateEvent = () => {
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior='padding'>
+      {/*når tastatur åbner, "skub" skærmen op, så al stadig kan ses. 
+        Herudover flere TextInputs som benyttes i funktionen over.
+      */}
       <View style={styles.over}>
         <Text style={styles.text}>Create new event</Text>
       </View>
