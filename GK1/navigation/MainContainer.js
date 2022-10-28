@@ -31,7 +31,7 @@ export default function MainContainer() {
             //hvis den valgte tab er Home
             iconName = focused ? 'home' : 'home-outline'; //sæt icon til Ionicon "Home" hvis trykket på, sæt til "Home-Outline" hvis den ikke er i fokus
           } else if (rn === eventName) {
-            //samme metode som ovenstående
+            //samme metode som ovenstående på de andre ikoner
             iconName = focused ? 'albums' : 'albums-outline';
           } else if (rn === createEventName) {
             iconName = focused ? 'add-circle' : 'add-circle-outline';
