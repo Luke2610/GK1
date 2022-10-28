@@ -1,3 +1,15 @@
+GK2:
+  
+  Demo af Mockup
+  MeetMe Mockup.fig..fig..fig
+  Link til Figma Mockup: https://www.figma.com/file/ysqg0DiEXmFPgMyQntwjxw/MeetMe-Prototype-2
+
+
+
+
+
+
+FREMGANGSMÅDE TIL GK1 (React Native)
 Åben GK1
 
 Kør npm install
