@@ -11,6 +11,7 @@ export default function EventScreen({ navigation }) {
       <Text>
         Denne skærm skal i fremtiden vise alle begivenheder. Lige ligesom at
         trykke på "Restauranter" på Wolt, hvor den viser samtlige restauranter.
+        I vores mockup er der et eksempel på dette
       </Text>
     </View>
   );

@@ -14,6 +14,7 @@ export default function ProfileScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Profile</Text>
+      {/*Viser information om brugeren */}
       <Text>Email: {auth.currentUser?.email}</Text>
       <TouchableOpacity style={styles.button} onPress={handleSignOut}>
         <Text style={styles.buttonText}>Sign Out</Text>
